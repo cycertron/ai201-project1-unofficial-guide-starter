@@ -1,0 +1,34 @@
+Document Title: Unigo - Springfield College Academics and Student Reviews
+Source URL: https://www.unigo.com/colleges/springfield-college
+Date Collected: June 14, 2026
+Source Type: College review page
+Domain: Unofficial Professor and Course Guidance
+Extraction Type: Real source notes, paraphrased for RAG use. This is not a full copy of the original review page.
+
+
+Source Focus:
+Student-life ratings, class-size ratings, academic ratings, and student comments about Springfield College.
+
+
+Extracted Data:
+
+On-campus housing rating: 3.9 stars from 52 students
+Off-campus housing rating: 3.0 stars from 38 students
+Campus food rating: 3.9 stars from 53 students
+Campus facilities rating: 4.2 stars from 53 students
+Class sizes rating: 4.5 stars from 53 students
+School activities rating: 4.3 stars from 53 students
+Local services rating: 3.5 stars from 53 students
+Academics rating: 4.0 stars from 53 students
+
+
+Extracted Student Signals:
+
+1. Students rate class sizes highly, suggesting that small classes are a strength.
+2. Academics are rated positively overall.
+3. One student review says the small campus helps students get more one-on-one time with professors.
+4. Reviews describe professors as generally accommodating and available to help.
+5. A student says classes are mostly well put together and interesting.
+6. This source is useful for questions about class sizes, professor accessibility, and overall academic experience at Springfield College.
+
+

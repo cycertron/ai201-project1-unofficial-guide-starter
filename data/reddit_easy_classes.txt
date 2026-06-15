@@ -1,0 +1,20 @@
+Document Title: Reddit Thread - Easiest and Hardest College Classes
+Source URL: https://www.reddit.com/r/college/comments/3y21h0/what_is_the_easiest_class_you_took_in_college_the/
+Date Collected: June 11, 2026
+Source Type: Student discussion thread
+Domain: Unofficial Professor and Course Guidance
+
+
+Thread Topic:
+A student asks other college students which classes were easiest and hardest, and students discuss how difficulty depends on grading style, workload, assignments, exams, and the professor.
+
+
+Extracted Student Signals:
+
+1. Students disagree about what makes a class easy.
+2. Some students think memorization-based classes are easier, but others say humanities classes can be reading-heavy and writing-heavy.
+3. A major theme is that class difficulty depends on the specific school, professor, and course structure.
+4. Writing, research papers, long readings, and capstone projects are described as making classes harder.
+5. Some students mention that lower-level courses can still vary widely in workload.
+6. The thread is useful for building answers that avoid saying a course is "easy" without explaining why.
+

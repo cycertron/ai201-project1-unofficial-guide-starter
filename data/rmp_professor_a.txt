@@ -1,0 +1,26 @@
+Document Title: Rate My Professors - Carol Ligarski
+Source URL: https://www.ratemyprofessors.com/professor/1265479
+Date Collected: June 14, 2026
+Source Type: Professor reviews
+Domain: Unofficial Professor and Course Guidance
+
+
+Professor: Carol Ligarski
+School: Springfield College
+Department: Computer Science
+Overall Quality: 2.6 / 5
+Number of Ratings: 12
+Would Take Again: 67%
+Level of Difficulty: 4.2 / 5
+Common Course Codes Mentioned: CISC101, CISC105
+
+
+Extracted Student Signals:
+
+1. Students describe the professor as caring and understanding, but they also say the workload can be heavy.
+2. Attendance appears important because students mention that class content is needed to succeed.
+3. Multiple reviews mention a high amount of homework and difficult projects.
+4. Some students say they learned a lot, even when they found the class stressful.
+5. The strongest positive signal is that students who keep up with the work may learn useful programming skills.
+6. The strongest caution is that students should expect regular attendance, heavy homework, and challenging tests or quizzes.
+

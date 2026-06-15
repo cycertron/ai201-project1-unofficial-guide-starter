@@ -1,0 +1,27 @@
+Document Title: Rate My Professors - Carl Fetteroll
+Source URL: https://www.ratemyprofessors.com/professor/2757587
+Date Collected: June 14, 2026
+Source Type: Professor reviews
+Domain: Unofficial Professor and Course Guidance
+
+
+Professor: Carl Fetteroll
+School: Springfield College
+Department: Mathematics
+Overall Quality: 5.0 / 5
+Number of Ratings: 3
+Would Take Again: 100%
+Level of Difficulty: 1.3 / 5
+Common Course Code Mentioned: MATH103
+Top Tags Mentioned: Gives good feedback, hilarious, amazing lectures
+
+
+Extracted Student Signals:
+
+1. Students describe this professor very positively.
+2. Reviews suggest the class is approachable and not overly difficult.
+3. Students mention useful feedback and engaging lecture style.
+4. A student specifically mentions that the professor checked in with them and helped them understand the material.
+5. Students describe the professor as funny, supportive, and able to connect class material to real-world examples.
+6. This source is useful for questions about beginner-friendly math professors or supportive teaching style.
+

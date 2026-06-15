@@ -1,0 +1,50 @@
+Document Title: Professor/Course Discord Advice
+Source URL: student-discord-course-advice
+Date Collected: June 14, 2026
+Source Type: Student Discord advice
+Domain: Unofficial Professor and Course Guidance at Springfield College
+
+---
+
+Message 1
+Channel: #course-advice
+Student Role: Senior CS major
+Topic: Choosing a programming professor
+Text:
+For beginner programming, choose a professor who gives lots of examples in class. Some professors are very project-based, which is good if you already know the basics, but harder if this is your first coding course. Ask whether the professor allows resubmissions or gives feedback before the final deadline.
+
+---
+
+Message 2
+Channel: #course-advice
+Student Role: Junior
+Topic: Exams in CS courses
+Text:
+Most CS exams are not about copying code from memory. They usually ask you to trace code, explain output, identify bugs, or compare algorithms. If you can explain your homework solutions out loud, you are usually prepared for the exam.
+
+---
+
+Message 3
+Channel: #math-help
+Student Role: Sophomore
+Topic: Linear Algebra professor expectations
+Text:
+The professor cares about showing steps. Even when the final answer is correct, students lose points if the reasoning is unclear. For quizzes, review class examples and make sure you understand why each row operation is valid.
+
+---
+
+Message 4
+Channel: #first-year-advice
+Student Role: Resident assistant
+Topic: Office hours
+Text:
+Students often wait too long to go to office hours. Professors are more helpful when you bring a specific question or a piece of code that is not working. Going before the first exam helps because the professor learns your name and can explain what to focus on.
+
+---
+
+Message 5
+Channel: #registration
+Student Role: Senior
+Topic: Building a balanced schedule
+Text:
+Avoid taking three courses with major final projects in the same semester. Ask older students which classes have weekly homework, which have big exams, and which have semester-long projects. A balanced schedule usually has a mix of exam-based, writing-based, and project-based classes.
