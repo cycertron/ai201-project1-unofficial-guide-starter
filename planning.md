@@ -1,13 +1,11 @@
 # Project 1 Planning: The Unofficial Guide
+## Domain 
 
-> Write this document before you write any pipeline code.
-> Your spec and architecture diagram are what you'll use to direct AI tools (Claude, Copilot, etc.) to generate your implementation — the more specific they are, the more useful the generated code will be.
-> Update the Retrieval Approach and Chunking Strategy sections if you change your approach during implementation.
-> Update this file before starting any stretch features.
+I chose Unofficial Professor and Course Guidance at Springfield College as my domain. This guide focuses on student-generated knowledge about professors, course difficulty, workload, exam style, teaching quality, feedback, and registration decisions.
 
+This knowledge is valuable because official course catalogs explain what a class is about, but they do not explain what students actually experience in the class. A student may want to know whether a professor gives useful feedback, whether exams match homework, whether a class is beginner-friendly, or whether the workload is manageable. That kind of information is usually scattered across review sites, forums, Reddit threads, and student conversations, so a RAG system can make it easier to search and cite.
 ---
 
-## Domain
 
 <!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
 
@@ -18,49 +16,47 @@
 <!-- List your specific sources: URLs, subreddit names, forum threads, or file descriptions.
      Aim for at least 10 sources that together cover different subtopics or perspectives within your domain. -->
 
-| # | Source | Description | URL or location |
-|---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
 
----
+| # | Source | Description | URL or location | File Path |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | Rate My Professors - Carol Ligarski | Professor review source for Computer Science courses, workload, difficulty, and teaching style | data/rmp_professor_a.txt | |
+| 2 | Rate My Professors - Carl Fetteroll | Professor review source for Mathematics, feedback quality, class difficulty, and beginner-friendliness | data/rmp_professor_b.txt | |
+| 3 | Rate My Professors - Fabio Valenti Possamai | Professor review source for Philosophy/humanities teaching style, feedback, and course difficulty | data/rmp_professor_c.txt | |
+| 4 | Reddit thread about CS professors | General student discussion about CS teaching quality, professor explanation style, and beginner support | data/reddit_cs_professors.txt | |
+| 5 | Reddit thread about easiest classes | Student discussion about what makes college classes easy or hard, including workload, exams, reading, and grading style | data/reddit_easy_classes.txt | |
+| 6 | Niche Springfield College academics reviews | College review page covering academics, professors, registration, support, and student academic experience | data/niche_academics_reviews.txt | |
+| 7 | Unigo Springfield College academics reviews | College review page covering class size, professor accessibility, academics, and student experience | data/unigo_academics.txt | |
+| 8 | Student course advice page/forum | Course advice source about programming, data structures, linear algebra, writing courses, and schedule balance | data/course_advice.txt | |
+| 9 | Professor/course Discord advice | Informal student advice about professor choice, office hours, CS exams, registration, and balanced schedules | data/discord_course_advice.txt | |
+| 10 | Campus newspaper/opinion about classes | Student-style article about registration, workload, professor feedback, exam format, and course selection | | |
+
 
 ## Chunking Strategy
-
-<!-- How will you split documents into chunks?
-     State your chunk size (in tokens or characters), overlap size, and explain why those
-     numbers fit the structure of your documents.
-     A review-heavy corpus warrants different chunking than a long FAQ. -->
-
 **Chunk size:**
+About 700–1,000 characters per chunk, roughly 150–250 tokens.
 
 **Overlap:**
+About 100–150 characters of overlap when a longer section needs to be split.
+
 
 **Reasoning:**
+Most of my documents are short reviews, student comments, forum posts, or advice messages. Because of that, I should not split every file blindly by a fixed size. A single review or message often contains the professor name, course name, workload description, and student recommendation together. If I split too aggressively, the system might retrieve a sentence like “the class is hard” without the reason why it is hard.
+
+My first strategy will be to chunk by natural units: one review, one forum post, one Discord-style message, or one article paragraph. If a section is too long, then I will split it into 700–1,000 character chunks with 100–150 characters of overlap. The overlap helps when an important idea is spread across two nearby paragraphs or when a professor name appears in one sentence and the actual student advice appears in the next sentence.
+
+If chunks are too small, retrieval may return incomplete evidence and the answer may become vague or unsupported. If chunks are too large, retrieval may return too much unrelated information, such as multiple professors or several course topics in one chunk. A good chunk should be specific enough to answer a question but complete enough to include the context behind the answer.
 
 ---
 
 ## Retrieval Approach
-
-<!-- Which embedding model are you using (e.g., all-MiniLM-L6-v2 via sentence-transformers)?
-     How many chunks will you retrieve per query (top-k)?
-     If you were deploying this for real users and cost wasn't a constraint, what tradeoffs
-     would you weigh in choosing a different embedding model — context length, multilingual
-     support, accuracy on domain-specific text, latency? -->
-
 **Embedding model:**
+all-MiniLM-L6-v2 using sentence-transformers
 
 **Top-k:**
+Retrieve the top 4 chunks for each user query.
 
 **Production tradeoff reflection:**
+I chose all-MiniLM-L6-v2 because it is lightweight, fast, and good enough for a first RAG project with a small text corpus. Since my documents are short and opinion-based, retrieving the top 4 chunks should give the LLM enough evidence without overwhelming it with too much context.
 
 ---
 
@@ -71,27 +67,20 @@
      is right or wrong. "What are good dining halls?" is too vague.
      "What do students say about wait times at [dining hall name] during lunch?" is testable. -->
 
+
 | # | Question | Expected answer |
-|---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| :--- | :--- | :--- |
+| 1 | What do students say about Professor Carol Ligarski’s workload and difficulty? | The system should answer that students describe her classes as challenging, with heavy homework, difficult projects, and important attendance expectations. It should also mention that some students still felt they learned useful programming skills. Expected source: data/rmp_professor_a.txt. |
+| 2 | Which professor in the documents seems most beginner-friendly for math? | The system should identify Carl Fetteroll as a strong option based on positive student signals such as helpful feedback, approachable difficulty, engaging lectures, and support for understanding the material. Expected source: data/rmp_professor_b.txt. |
+| 3 | What do students say about class sizes and professor accessibility at Springfield College? | The system should explain that students describe class sizes positively and suggest that smaller classes help students get more one-on-one access to professors. Expected source: data/unigo_academics.txt. |
+| 4 | Before choosing a class that seems easy, what should a student check first? | The system should say that students should check weekly workload, exam format, reading or writing expectations, project deadlines, and whether the professor gives feedback early enough to improve. Expected sources: data/reddit_easy_classes.txt and data/campus_classes_article.txt. |
+| 5 | How should a beginner CS student prepare for programming exams? | The system should explain that students should practice tracing code, explaining outputs, identifying bugs, reviewing homework solutions, and understanding algorithms rather than only memorizing code. Expected sources: data/discord_course_advice.txt, data/course_advice.txt, or data/reddit_cs_professors.txt. |
 
 ---
 
 ## Anticipated Challenges
-
-<!-- What could go wrong? Name at least two specific risks with reasoning.
-     Consider: noisy or inconsistent documents, missing source attribution, off-topic
-     retrieval, chunks that split key information across boundaries. -->
-
-1.
-
-2.
-
----
+1. Student-generated sources can be subjective and inconsistent. One student may describe a professor as difficult while another student may describe the same professor as helpful. The system should avoid absolute claims and use careful wording like “students in the collected sources suggest” or “the available reviews indicate.”
+2. Source attribution could break if metadata is not preserved during chunking. Since the project requires grounded and cited answers, each chunk needs to keep its file path, document title, source type, and chunk ID. Without this metadata, the answer might be correct but not properly cited.
 
 ## Architecture
 
@@ -105,18 +94,11 @@
 
 ## AI Tool Plan
 
-<!-- For each part of the pipeline below, describe:
-     - Which AI tool you plan to use (Claude, Copilot, ChatGPT, etc.)
-     - What you'll give it as input (which sections of this planning.md, which requirements)
-     - What you expect it to produce
-     - How you'll verify the output matches your spec
+## Milestone 3 — Ingestion and chunking:
+I will use ChatGPT and Claude to help implement the document loading and chunking functions. I will give the AI my Documents section and Chunking Strategy section as input. I will ask it to create a load_documents() function that reads .txt files from the data/ folder and a chunk_text() function that splits documents by natural units such as reviews, posts, messages, and paragraphs before using fixed-size character splitting.
 
-     "I'll use AI to help me code" is not a plan.
-     "I'll give Claude my Chunking Strategy section and ask it to implement chunk_text()
-     with my specified chunk size and overlap" is a plan. -->
+## Milestone 4 — Embedding and retrieval:
+I will use ChatGPT, and Claude to help implement the embedding and retrieval pipeline. I will give the AI my Retrieval Approach section and ask it to write code using sentence-transformers with all-MiniLM-L6-v2. I expect it to help create embeddings for chunks, store them in FAISS or Chroma, and retrieve the top 4 chunks for a user query.
 
-**Milestone 3 — Ingestion and chunking:**
-
-**Milestone 4 — Embedding and retrieval:**
-
-**Milestone 5 — Generation and interface:**
+## Milestone 5 — Generation and interface:
+I will use AI tools to help build the final answer-generation prompt and a simple user interface. I will provide the AI with my evaluation questions, retrieval approach, and citation requirements. I expect it to help write a prompt that tells the LLM to answer only from retrieved chunks, cite the source files, and admit when the documents do not contain enough information.
